@@ -18,9 +18,9 @@ app.use(logger("dev"));
 //cors
 const cors = require("cors");
 const helmet = require("helmet");
-app.use(
-  cors()
-);
+// app.use(
+//   cors()
+// );
 
 // app.use(function (req, res, next) {
 //   res.header("Access-Control-Allow-Origin", "*");
@@ -34,7 +34,7 @@ app.use(
 
 //wearing a helmet
 
-app.use(helmet());
+// app.use(helmet());
 
 // Parsing middleware
 app.use(bodyParser.json());
