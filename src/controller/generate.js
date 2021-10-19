@@ -118,19 +118,30 @@ module.exports = {
         buffer
       );
 
+      let count = await models.NFT.count();
+
+      const nft = await models.NFT.create({
+        name: `Punk ${count + 1}`,
+        description: "",
+        image: "",
+        background: attrubutes.background.split(".")[0],
+        bottom: attrubutes.bottom.split(".")[0],
+        eyes: attrubutes.eyes ? attrubutes.eyes.split(".")[0] : "",
+        facialhair: attrubutes.facialhair
+          ? attrubutes.facialhair.split(".")[0]
+          : "",
+        footwear: attrubutes.footwear.split(".")[0],
+        head: attrubutes.head.split(".")[0],
+        mouth: attrubutes.mouth ? attrubutes.mouth.split(".")[0] : "",
+        top: attrubutes.top.split(".")[0],
+        type: attrubutes.body.split(".")[0],
+      });
+
       const response = await ipfs.add(buffer);
       let hash = response[0].hash;
       console.log(hash);
 
-      // const nft = await models.NFT.create({
-      //   name: `Punk ${punk}`,
-      //   description: "",
-      //   image: `https://ipfs.io/ipfs/${hash}`,
-      //   body: body,
-      //   bottom: bottom,
-      //   footwear: footwear,
-      //   top: top,
-      // });
+      await nft.update({ image: `https://ipfs.io/ipfs/${hash}` });
       //ipfs.io/ipfs/QmSDcE6CrKmQuCSCQ6YTYKx13AXg7c4mgP4n27x3vi5keq
 
       https: return res.json(nft);
@@ -218,6 +229,7 @@ module.exports = {
           id: id,
         },
       });
+      console.log(nft);
       if (!nft) {
         throw new Error("Token ID invalid");
       }
@@ -225,39 +237,61 @@ module.exports = {
 
       const resObj = {
         name: nft.name,
-        symbol: "DOM",
+        symbol: "FUNK",
         image: nft.image,
         description: nft.description,
-        seller_fee_basis_points: 0,
+        seller_fee_basis_points: 1000,
         animation_url: "https://www.arweave.net/efgh1234?ext=mp4",
         external_url: "https://solflare.com",
         attributes: [
           {
-            trait_type: "Body",
-            value: `${process.env.DOMAIN_URL}/body/${nft.body}`,
+            trait_type: "Background",
+            value: nft.background,
           },
 
           {
             trait_type: "Bottom",
-            value: `${process.env.DOMAIN_URL}/bottom/${nft.bottom}`,
+            value: nft.bottom,
           },
 
+          {
+            trait_type: "Eyes",
+            value: nft.eyes,
+          },
+
+          {
+            trait_type: "Facial Hair",
+            value: nft.facialhair,
+          },
           {
             trait_type: "Footwear",
-            value: `${process.env.DOMAIN_URL}/footwear/${nft.footwear}`,
+            value: nft.footwear,
           },
-
+          {
+            trait_type: "Head",
+            value: nft.head,
+          },
+          {
+            trait_type: "Mouth",
+            value: nft.mouth,
+          },
           {
             trait_type: "Top",
-            value: `${process.env.DOMAIN_URL}/top/${nft.top}`,
+            value: nft.top,
           },
-        ],
-        creators: [
           {
-            address: "SOLFLR15asd9d21325bsadythp547912501b",
-            share: 100,
+            trait_type: "Type",
+            value: nft.type,
           },
         ],
+        properties: {
+          creators: [
+            {
+              address: "",
+              share: 100,
+            },
+          ],
+        },
       };
 
       return res.json(resObj);
