@@ -21,7 +21,7 @@ const helmet = require("helmet");
 app.use(
   cors({
     origin: (origin, callback) => callback(null, true),
-    credentials: true,
+    credentials: false,
   })
 );
 
