@@ -1,5 +1,5 @@
 const router = require("express").Router();
-
+const cors = require("cors")
 const {
   mint,
   roll_all,
@@ -10,11 +10,21 @@ const {
   update_mint_status,
 } = require("../controller/generate");
 
-router.post("/mint", mint);
+var corsOptions = {
+  origin: function (origin, callback) {
+    // db.loadOrigins is an example call to load
+    // a list of origins from a backing database
+    db.loadOrigins(function (error, origins) {
+      callback(error, origins)
+    })
+  }
+}
 
-router.get("/rollall", roll_all);
+router.post("/mint", cors(corsOptions),  mint);
 
-router.post("/rollone", roll_single);
+router.get("/rollall", cors(corsOptions),  roll_all);
+
+router.post("/rollone", cors(corsOptions),  roll_single);
 
 router.get("/metadata/:id", get_meta_data);
 
