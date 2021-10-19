@@ -184,11 +184,9 @@ module.exports = {
   },
 
   roll_single: async (req, res, next) => {
-
-    
     try {
-      const ca = canvas.createCanvas(600, 600);
-      const ctx = ca.getContext("2d");
+      // const ca = canvas.createCanvas(600, 600);
+      // const ctx = ca.getContext("2d");
       let bodyy = await rollSingleSchema.validateAsync(req.body);
       const { gender, type } = bodyy;
       console.log(bodyy);
