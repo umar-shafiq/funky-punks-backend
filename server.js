@@ -19,18 +19,21 @@ app.use(logger("dev"));
 const cors = require("cors");
 const helmet = require("helmet");
 app.use(
-  cors()
+  cors({
+    origin: (origin, callback) => callback(null, true),
+    credentials: false,
+  })
 );
 
-// app.use(function (req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header(
-//     "Access-Control-Allow-Headers",
-//     "Origin, X-Requested-With, Content-Type, Accept"
-//   );
-//   res.header("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, OPTIONS");
-//   next();
-// });
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  res.header("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, OPTIONS");
+  next();
+});
 
 //wearing a helmet
 
@@ -38,17 +41,10 @@ app.use(helmet());
 
 // Parsing middleware
 app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use("/output", express.static("output"));
 app.use("/images", express.static("images"));
-
-http.createServer(function (request, response) {
-  response.writeHead(200, {
-      'Content-Type': 'text/plain',
-      'Access-Control-Allow-Origin' : '*',
-      'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE'
-  });
 
 // app.use(express.static(path.join(__dirname, "../data")));
 // //taimor edits
