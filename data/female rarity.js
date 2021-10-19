@@ -1,4 +1,4 @@
-let MOUTH = [
+exports.FEMALE_MOUTH = [
   {
     Attribute: "Cigarette",
     Rarity: "11",
@@ -40,7 +40,7 @@ let MOUTH = [
     Rarity: "9",
   },
 ];
-let EYES = [
+exports.FEMALE_EYES = [
   {
     Attribute: "Clown Eyes Green",
     Rarity: "7",
@@ -90,7 +90,7 @@ let EYES = [
     Rarity: "10",
   },
 ];
-let FOOTWEAR = [
+exports.FEMALE_FOOTWEAR = [
   {
     Attribute: "Green Shoes",
     Rarity: "9",
@@ -220,7 +220,7 @@ let FOOTWEAR = [
     Rarity: "0.09",
   },
 ];
-let TYPE = [
+exports.FEMALE_TYPE = [
   {
     Attribute: "Female Olive",
     Rarity: "25",
@@ -238,7 +238,7 @@ let TYPE = [
     Rarity: "25",
   },
 ];
-let BOTTOM = [
+exports.FEMALE_BOTTOM = [
   {
     Attribute: "Jeans",
     Rarity: "8",
@@ -400,7 +400,7 @@ let BOTTOM = [
     Rarity: "1",
   },
 ];
-let TOP = [
+exports.FEMALE_TOP = [
   {
     Attribute: "Plain Pink Singlet",
     Rarity: "9",
@@ -610,7 +610,7 @@ let TOP = [
     Rarity: "0.05",
   },
 ];
-let HEAD = [
+exports.FEMALE_HEAD = [
   {
     Attribute: "Chinese Landlord Hat",
     Rarity: "5",

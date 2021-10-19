@@ -1,4 +1,4 @@
-let MOUTH = [
+exports.MALE_MOUTH = [
   {
     Attribute: "Cigarette",
     Rarity: "9",
@@ -29,7 +29,7 @@ let MOUTH = [
   },
 ];
 
-let EYES = [
+exports.MALE_EYES = [
   {
     Attribute: "Clown Eyes Green",
     Rarity: "10",
@@ -80,7 +80,7 @@ let EYES = [
   },
 ];
 
-let FACIALHAIR = [
+exports.MALE_FACIALHAIR = [
   {
     Attribute: "Brown Mustache",
     Rarity: "6",
@@ -135,7 +135,7 @@ let FACIALHAIR = [
   },
 ];
 
-let FOOTWEAR = [
+exports.MALE_FOOTWEAR = [
   {
     Attribute: "Flip Flops",
     Rarity: "10",
@@ -250,7 +250,7 @@ let FOOTWEAR = [
   },
 ];
 
-let TYPE = [
+exports.MALE_TYPE = [
   {
     Attribute: "Male Olive",
     Rarity: "23.5",
@@ -281,7 +281,7 @@ let TYPE = [
   },
 ];
 
-let BOTTOM = [
+exports.MALE_BOTTOM = [
   {
     Attribute: "Jeans",
     Rarity: "9",
@@ -444,9 +444,9 @@ let BOTTOM = [
   },
 ];
 
-let TOP = [
+exports.MALE_TOP = [
   {
-    Attribute: "Plain Pink Singlet",
+    Attribute: "Purple Fur Coat With White Shirt",
     Rarity: "11",
   },
   {
@@ -523,7 +523,7 @@ let TOP = [
   },
   {
     Attribute: "Robot",
-    Rarity: "1.2",
+    Rarity: "0.5",
   },
   {
     Attribute: "Mcdonalds Shirt",
@@ -551,7 +551,7 @@ let TOP = [
   },
   {
     Attribute: "Pilot Shirt",
-    Rarity: "1.2",
+    Rarity: "1.01",
   },
   {
     Attribute: "NFL Pads",
@@ -623,7 +623,7 @@ let TOP = [
   },
   {
     Attribute: "Sad Face Shirt",
-    Rarity: "3",
+    Rarity: "11",
   },
   {
     Attribute: "Matrix Coat",
@@ -662,106 +662,74 @@ let TOP = [
     Rarity: "0.01",
   },
 ];
-let HEAD = [
+exports.MALE_HEAD = [
   {
-    Attribute: "Chinese Landlord Hat",
-    Rarity: "6",
-  },
-  {
-    Attribute: "Cowboy Hat",
-    Rarity: "4",
-  },
-  {
-    Attribute: "Sibenik",
-    Rarity: "3.56",
-  },
-  {
-    Attribute: "Mohawk",
-    Rarity: "3.19",
-  },
-  {
-    Attribute: "Bororo",
-    Rarity: "3.15",
-  },
-  {
-    Attribute: "Beer Bong",
-    Rarity: "0.07",
-  },
-  {
-    Attribute: "Pilot Cap",
-    Rarity: "2.78",
-  },
-  {
-    Attribute: "Chullo",
-    Rarity: "2.56",
-  },
-  {
-    Attribute: "Beret",
-    Rarity: "2.45",
-  },
-  {
-    Attribute: "Hennin",
-    Rarity: "2.14",
-  },
-  {
-    Attribute: "Jaapi",
-    Rarity: "2.06",
+    Attribute: "Ayam",
+    Rarity: "1.82",
   },
   {
     Attribute: "Bamboo Hat",
     Rarity: "2.04",
   },
   {
-    Attribute: "News Boy Hat",
-    Rarity: "2.04",
+    Attribute: "Bearskin",
+    Rarity: "1.74",
+  },
+  {
+    Attribute: "Beer Bong",
+    Rarity: "0.07",
+  },
+  {
+    Attribute: "Beret",
+    Rarity: "2.45",
+  },
+  {
+    Attribute: "Boater Hat",
+    Rarity: "1.64",
+  },
+  {
+    Attribute: "Bororo",
+    Rarity: "3.15",
   },
   {
     Attribute: "Chichak Helmet",
     Rarity: "1.99",
   },
   {
-    Attribute: "Misango Cap",
-    Rarity: "1.91",
+    Attribute: "Chinese Landlord Hat",
+    Rarity: "8",
   },
   {
-    Attribute: "Fedora",
-    Rarity: "1.87",
-  },
-  {
-    Attribute: "Knitted Cap",
-    Rarity: "1.86",
-  },
-  {
-    Attribute: "Isicholo",
-    Rarity: "1.86",
+    Attribute: "Chullo",
+    Rarity: "2.56",
   },
   {
     Attribute: "Clown Hair",
     Rarity: "1.83",
   },
   {
-    Attribute: "Ayam",
-    Rarity: "1.82",
+    Attribute: "Cork Hat",
+    Rarity: "1.03",
   },
   {
-    Attribute: "Tyrolean",
-    Rarity: "1.8",
-  },
-  {
-    Attribute: "Sombrero",
-    Rarity: "1.77",
-  },
-  {
-    Attribute: "Flamenco",
-    Rarity: "1.75",
-  },
-  {
-    Attribute: "Bearskin",
-    Rarity: "1.74",
+    Attribute: "Cowboy Hat",
+    Rarity: "4",
   },
   {
     Attribute: "Crazy Hair",
     Rarity: "0.09",
+  },
+  {
+    Attribute: "Durag",
+    Rarity: "0.94",
+  },
+  {
+    Attribute: "Fedora",
+    Rarity: "4",
+  },
+  {
+    Attribute: "Flamenco",
+    Rarity: "1.75",
   },
   {
     Attribute: "Gat",
@@ -772,24 +740,89 @@ let HEAD = [
     Rarity: "1.68",
   },
   {
-    Attribute: "Non La",
-    Rarity: "1.66",
+    Attribute: "Headband",
+    Rarity: "4.7",
   },
   {
-    Attribute: "Tophat",
-    Rarity: "1.66",
+    Attribute: "Hennin",
+    Rarity: "2.14",
+  },
+  {
+    Attribute: "Hoodie",
+    Rarity: "1.44",
+  },
+  {
+    Attribute: "Isicholo",
+    Rarity: "1.86",
+  },
+  {
+    Attribute: "Jaapi",
+    Rarity: "4",
   },
   {
     Attribute: "Keffiyeh",
     Rarity: "1.65",
   },
   {
-    Attribute: "Boater Hat",
-    Rarity: "1.64",
+    Attribute: "Knitted Cap",
+    Rarity: "2",
   },
   {
     Attribute: "Komusou",
-    Rarity: "1.64",
+    Rarity: "1.65",
+  },
+  {
+    Attribute: "Krakowiak",
+    Rarity: "1.16",
+  },
+  {
+    Attribute: "Messy Hair",
+    Rarity: "1.01",
+  },
+  {
+    Attribute: "Misango Cap",
+    Rarity: "1.91",
+  },
+  {
+    Attribute: "Mohawk",
+    Rarity: "3.19",
+  },
+  {
+    Attribute: "News Boy Hat",
+    Rarity: "2.04",
+  },
+  {
+    Attribute: "Non La",
+    Rarity: "1.66",
+  },
+  {
+    Attribute: "Panama Hat",
+    Rarity: "1.01",
+  },
+  {
+    Attribute: "Pilot Cap",
+    Rarity: "2.78",
+  },
+  {
+    Attribute: "Police Hat",
+    Rarity: "1.34",
+  },
+  {
+    Attribute: "Rasta Cap",
+    Rarity: "0.77",
+  },
+  {
+    Attribute: "Sibenik",
+    Rarity: "3.56",
+  },
+  {
+    Attribute: "Slick",
+    Rarity: "1.06",
+  },
+  {
+    Attribute: "Sombrero",
+    Rarity: "1.77",
+    undefined: "100",
   },
   {
     Attribute: "Stringy Hair",
@@ -800,83 +833,47 @@ let HEAD = [
     Rarity: "1.57",
   },
   {
-    Attribute: "Turban",
-    Rarity: "1.51",
+    Attribute: "The Fez",
+    Rarity: "0.56",
   },
   {
-    Attribute: "Hoodie",
-    Rarity: "1.44",
-  },
-  {
-    Attribute: "Police Hat",
-    Rarity: "1.33",
+    Attribute: "Tophat",
+    Rarity: "1.66",
   },
   {
     Attribute: "Tophat White",
     Rarity: "1.26",
   },
   {
-    Attribute: "Ushanka",
-    Rarity: "1.24",
+    Attribute: "Trapper Hat",
+    Rarity: "0.18",
   },
   {
     Attribute: "Tuque",
     Rarity: "1.17",
   },
   {
-    Attribute: "Krakowiak",
-    Rarity: "1.16",
+    Attribute: "Turban",
+    Rarity: "1.51",
   },
   {
-    Attribute: "Wild Hair",
-    Rarity: "1.15",
+    Attribute: "Tyrolean",
+    Rarity: "1.8",
+  },
+  {
+    Attribute: "Ushanka",
+    Rarity: "1.24",
   },
   {
     Attribute: "Viking Hat",
     Rarity: "0.1",
   },
   {
-    Attribute: "Slick",
-    Rarity: "1.06",
+    Attribute: "Wild Hair",
+    Rarity: "1.15",
   },
   {
-    Attribute: "Cork Hat",
-    Rarity: "1.03",
-  },
-  {
-    Attribute: "Panama Hat",
-    Rarity: "1.01",
-  },
-  {
-    Attribute: "Messy Hair",
-    Rarity: "1.01",
-  },
-  {
-    Attribute: "Trapper-Hat",
-    Rarity: "0.99",
-  },
-  {
-    Attribute: "Durag",
-    Rarity: "0.94",
-  },
-  {
-    Attribute: "Headband",
-    Rarity: "4.7",
-  },
-  {
-    Attribute: "Rasta Cap",
-    Rarity: "0.77",
-  },
-  {
-    Attribute: "Green Beanie",
-    Rarity: "0.6",
-  },
-  {
-    Attribute: "The Fez",
-    Rarity: "0.56",
-  },
-  {
-    Attribute: "Trapper Hat",
-    Rarity: "0.18",
+    Attribute: "Vampire Hair",
+    Rarity: "1",
   },
 ];

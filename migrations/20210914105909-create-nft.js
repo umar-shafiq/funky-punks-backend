@@ -44,6 +44,12 @@ module.exports = {
       type: {
         type: Sequelize.STRING,
       },
+      imagename: {
+        type: Sequelize.STRING,
+      },
+      counter: {
+        type: Sequelize.STRING,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

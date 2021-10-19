@@ -25,6 +25,8 @@ module.exports = (sequelize, DataTypes) => {
       mouth: DataTypes.STRING,
       top: DataTypes.STRING,
       type: DataTypes.STRING,
+      imagename: DataTypes.STRING,
+      counter: DataTypes.STRING,
     },
     {
       sequelize,

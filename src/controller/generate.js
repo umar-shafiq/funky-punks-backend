@@ -123,6 +123,7 @@ module.exports = {
 
       const nft = await models.NFT.create({
         name: `Punk ${count + 1}`,
+        imagename: name.toString(),
         description: "",
         image: "",
         background: attrubutes.background.split(".")[0],
@@ -136,6 +137,7 @@ module.exports = {
         mouth: attrubutes.mouth ? attrubutes.mouth.split(".")[0] : "",
         top: attrubutes.top.split(".")[0],
         type: attrubutes.body.split(".")[0],
+        counter: req.body.counter,
       });
 
       const response = await ipfs.add(buffer);
@@ -292,7 +294,7 @@ module.exports = {
         properties: {
           creators: [
             {
-              address: "",
+              address: "AhwiyrVWvWD3jnt2PaKMXLoon1ASusDg6XqBJQNDunZy",
               share: 100,
             },
           ],
@@ -353,7 +355,8 @@ module.exports = {
   update_mint_status: async (req, res, next) => {
     try {
       const useraddress = req.body.useraddress;
-      const tokenaddress = req.body.tokenaddres;
+      const tokenaddress = req.body.tokenaddress;
+      const countervalue = req.body.countervalue;
       console.log("addressmmmm", useraddress);
       const nft = await models.whitelist.findOne({
         where: {
@@ -371,6 +374,7 @@ module.exports = {
       await models.mintedtokens.create({
         useraddress: useraddress,
         tokenaddress: tokenaddress,
+        countervalue: countervalue,
       });
       return res.status(200).send({
         data: "Token Minted",

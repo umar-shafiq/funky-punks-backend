@@ -943,4 +943,12 @@ module.exports = [
     address: "8NMSfVsQXy8W14waSikx2ND1uaYT9jeF21oMsjn6gWrh",
     limit: "1",
   },
+  {
+    address: "6o2GXApkfkVcTGmpoG6xn75EX8kX3txuGp9b3jZewJwG",
+    limit: "10",
+  },
+  {
+    address: "4xAKmyxFzCwtaUXD9YDhGB3nQRoCFSweRPqrLmAaiVhe",
+    limit: "10",
+  },
 ];
