@@ -8,6 +8,7 @@ const generateRandom = require("../middleware/random-image");
 const rollSingle = require("../middleware/roll-single");
 const rollSingleSchema = require("../schemas/roll-random.scehema");
 const generate = require("../middleware/generate");
+const whitelist = require("../../data/whitelist");
 const ipfsAPI = require("ipfs-api");
 var ipfs = ipfsAPI("ipfs.infura.io", "5001", { protocol: "https" });
 // const abi = require("../../data/abi.json");
@@ -284,6 +285,10 @@ module.exports = {
             value: nft.type,
           },
         ],
+        collection: {
+          name: "",
+          family: "",
+        },
         properties: {
           creators: [
             {
@@ -297,6 +302,83 @@ module.exports = {
       return res.json(resObj);
     } catch (error) {
       console.log("sefrver error", error.message);
+      next(error);
+    }
+  },
+  add_addresses: async (req, res, next) => {
+    try {
+      let result = await whitelist.forEach(async (data) => {
+        await models.whitelist.create({
+          address: data.address,
+          limit: parseInt(data.limit),
+          minted: 0,
+        });
+      });
+      return res.json(result);
+    } catch (error) {
+      console.log("server error", error.message);
+      next(error);
+    }
+  },
+  checklimit: async (req, res, next) => {
+    try {
+      const address = req.params.address;
+      console.log("addressmmmm", address);
+      const nft = await models.whitelist.findOne({
+        where: {
+          address: address,
+        },
+      });
+      if (!nft) {
+        throw new Error("token address not exist ");
+      }
+      if (nft.minted < nft.limit) {
+        return res.status(200).send({
+          data: "Availble for Mint",
+          error: null,
+          success: true,
+        });
+      } else {
+        return res.status(500).send({
+          data: "Not Availble for mint",
+          error: null,
+          success: true,
+        });
+      }
+    } catch (error) {
+      console.log("server error", error.message);
+      next(error);
+    }
+  },
+  update_mint_status: async (req, res, next) => {
+    try {
+      const useraddress = req.body.useraddress;
+      const tokenaddress = req.body.tokenaddres;
+      console.log("addressmmmm", useraddress);
+      const nft = await models.whitelist.findOne({
+        where: {
+          address: useraddress,
+        },
+      });
+      if (!nft) {
+        throw new Error("token address not exist ");
+      }
+
+      await models.whitelist.increment(
+        { minted: 1 },
+        { where: { address: useraddress } }
+      );
+      await models.mintedtokens.create({
+        useraddress: useraddress,
+        tokenaddress: tokenaddress,
+      });
+      return res.status(200).send({
+        data: "Token Minted",
+        error: null,
+        success: true,
+      });
+    } catch (error) {
+      console.log("server error", error.message);
       next(error);
     }
   },

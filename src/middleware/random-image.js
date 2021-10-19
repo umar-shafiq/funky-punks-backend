@@ -44,4 +44,15 @@ const randomImage = async () => {
   }
 };
 
+function weightFunction(items) {
+  var cumul = 100;
+  var random = Math.floor(Math.random() * 100);
+
+  for (var i = 0; i < items.length; i++) {
+    cumul -= parseInt(items[i].Rarity);
+    if (random >= cumul) {
+      return items[i];
+    }
+  }
+}
 module.exports = randomImage;
