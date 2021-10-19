@@ -244,8 +244,7 @@ module.exports = {
         image: nft.image,
         description: nft.description,
         seller_fee_basis_points: 1000,
-        animation_url: "https://www.arweave.net/efgh1234?ext=mp4",
-        external_url: "https://solflare.com",
+        external_url: "https://funkypunks.net",
         attributes: [
           {
             trait_type: "Background",

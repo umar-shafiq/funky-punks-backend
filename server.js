@@ -19,10 +19,7 @@ app.use(logger("dev"));
 const cors = require("cors");
 const helmet = require("helmet");
 app.use(
-  cors({
-    origin: (origin, callback) => callback(null, true),
-    credentials: false,
-  })
+  cors()
 );
 
 // app.use(function (req, res, next) {
@@ -41,7 +38,7 @@ app.use(helmet());
 
 // Parsing middleware
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use("/output", express.static("output"));
 app.use("/images", express.static("images"));
