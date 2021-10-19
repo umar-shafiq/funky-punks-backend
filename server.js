@@ -83,7 +83,7 @@ app.use(function (req, res, next) {
 app.use(errorHandler);
 
 // Get values from env vars or defaults where not provided
-let port = process.env.PORT || 3000;
+let port = process.env.PORT || 4000;
 
 // Start the server
 app.listen(port || 4000, async () => {
