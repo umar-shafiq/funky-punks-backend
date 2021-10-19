@@ -21,10 +21,7 @@ const helmet = require("helmet");
 const cors = require("cors");
 
 app.use(
-  cors({
-    origin: (origin, callback) => callback(null, true),
-    credentials: true,
-  })
+  cors()
 );
 
 app.all("/api/*", function(req, res, next) {
