@@ -43,6 +43,13 @@ app.use(bodyParser.json());
 app.use("/output", express.static("output"));
 app.use("/images", express.static("images"));
 
+http.createServer(function (request, response) {
+  response.writeHead(200, {
+      'Content-Type': 'text/plain',
+      'Access-Control-Allow-Origin' : '*',
+      'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE'
+  });
+
 // app.use(express.static(path.join(__dirname, "../data")));
 // //taimor edits
 // app.use(express.static(path.join(__dirname, "/images")));
