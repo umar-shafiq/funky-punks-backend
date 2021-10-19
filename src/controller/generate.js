@@ -7,6 +7,7 @@ const canvas = require("canvas");
 const generateRandom = require("../middleware/random-image");
 const rollSingle = require("../middleware/roll-single");
 const rollSingleSchema = require("../schemas/roll-random.scehema");
+const generate = require("../middleware/generate");
 const ipfsAPI = require("ipfs-api");
 var ipfs = ipfsAPI("ipfs.infura.io", "5001", { protocol: "https" });
 // const abi = require("../../data/abi.json");
@@ -78,32 +79,22 @@ module.exports = {
     try {
       const ca = canvas.createCanvas(600, 600);
       const ctx = ca.getContext("2d");
-      const { images, imageName } = await generateRandom();
-      ctx.fillStyle = "#fff";
-      console.log("body ::", imageName.body);
-      images.forEach((item) => {
-        console.log("bodyImagee from controller ::: ", item);
-        ctx.drawImage(item, 0, 0, 600, 600);
-      });
+      const { images, imageName, gender } = await generateRandom();
+      // let name = await generate({ images, imageName, gender });
 
-      // console.log('draw')
-      const buffer = ca.toBuffer("image/png");
-      // const response = await ipfs.add(buffer)
-      // let hash = response[0].hash
-      // console.log("JASJJJJJJ :::",hash)
-
-      fs.writeFileSync(
-        path.join(__dirname, `../../output/${punk}.png`),
-        buffer
-      );
-
+      console.log(imageName);
       const nft = {
-        image: `${punk}.png`,
-        body: imageName.body,
-        bottom: imageName.bottom,
-        footwear: imageName.footwear,
-        top: imageName.top,
+        background: imageName.BACKGROUND,
+        body: imageName.TYPE,
+        bottom: imageName.BOTTOM,
+        footwear: imageName.FOOTWEAR,
+        head: imageName.HEAD,
+        top: imageName.TOP,
+        gender: gender,
+        eyes: imageName?.EYES,
+        facialHair: imageName["FACIAL HAIR"],
       };
+      console.log(nft);
       punk++;
 
       return res.json(nft);
@@ -118,41 +109,35 @@ module.exports = {
       const ca = canvas.createCanvas(600, 600);
       const ctx = ca.getContext("2d");
       let bodyy = await rollSingleSchema.validateAsync(req.body);
-      const { body, bottom, footwear, top, type } = bodyy;
+      const { gender, type } = bodyy;
+      console.log(bodyy);
+      const data = await rollSingle(gender, type);
 
-      const { images, imageNames } = await rollSingle(
-        body,
-        bottom,
-        footwear,
-        top,
-        type
-      );
+      // ctx.fillStyle = "#fff";
 
-      ctx.fillStyle = "#fff";
+      // images.forEach((item) => {
+      //   ctx.drawImage(item, 0, 0, 600, 600);
+      // });
 
-      images.forEach((item) => {
-        ctx.drawImage(item, 0, 0, 600, 600);
-      });
+      // console.log("draw");
+      // const buffer = ca.toBuffer("image/png");
+      // // const response = await ipfs.add(buffer)
+      // // let hash = response[0].hash
 
-      console.log("draw");
-      const buffer = ca.toBuffer("image/png");
-      // const response = await ipfs.add(buffer)
-      // let hash = response[0].hash
+      // fs.writeFileSync(
+      //   path.join(__dirname, `../../output/${punk}.png`),
+      //   buffer
+      // );
 
-      fs.writeFileSync(
-        path.join(__dirname, `../../output/${punk}.png`),
-        buffer
-      );
-
-      const nft = {
-        image: `${punk}.png`,
-        body: imageNames.body,
-        bottom: imageNames.bottom,
-        footwear: imageNames.footwear,
-        top: imageNames.top,
-      };
-      punk++;
-      return res.json(nft);
+      // const nft = {
+      //   image: `${punk}.png`,
+      //   body: imageNames.body,
+      //   bottom: imageNames.bottom,
+      //   footwear: imageNames.footwear,
+      //   top: imageNames.top,
+      // };
+      // punk++;
+      return res.json(data);
     } catch (error) {
       console.log("server error", error);
       next(error);
