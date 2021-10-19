@@ -18,8 +18,13 @@ app.use(logger("dev"));
 //cors
 const cors = require("cors");
 const helmet = require("helmet");
-app.use(cors());
-app.options('*', cors());
+const cors = require("cors");
+const corsOptions = {
+  origin: "http://localhost:3000",
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
 
 // app.use(function (req, res, next) {
 //   res.header("Access-Control-Allow-Origin", "*");
