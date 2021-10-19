@@ -52,6 +52,8 @@ app.use(cors(corsOptions));
 
 // Parsing middleware
 app.use(bodyParser.json());
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use("/output", express.static("output"));
 app.use("/images", express.static("images"));

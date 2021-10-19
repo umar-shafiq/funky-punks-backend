@@ -20,11 +20,11 @@ var corsOptions = {
   }
 }
 
-router.post("/mint", cors(corsOptions),  mint);
+router.post("/mint",  mint);
 
-router.get("/rollall", cors(corsOptions),  roll_all);
+router.get("/rollall", roll_all);
 
-router.post("/rollone", cors(corsOptions),  roll_single);
+router.post("/rollone",  roll_single);
 
 router.get("/metadata/:id", get_meta_data);
 
