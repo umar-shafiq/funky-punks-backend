@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "postgres",
-    "password": "7399",
-    "database": "funks",
-    "host": "127.0.0.1",
+    "username": "umar_315AM",
+    "password": "6MhUd9NoHyHlDHbjRMWt",
+    "database": "funky_db_final",
+    "host": "34.85.167.44",
     "dialect": "postgres"
   },
   "test": {

@@ -229,7 +229,7 @@ module.exports = {
 
       const nft = await models.NFT.findOne({
         where: {
-          id: id,
+          counter: id,
         },
       });
       console.log(nft);
@@ -294,7 +294,7 @@ module.exports = {
         properties: {
           creators: [
             {
-              address: "AhwiyrVWvWD3jnt2PaKMXLoon1ASusDg6XqBJQNDunZy",
+              address: "9crduWW6LdFZgSpwVS2JRsycWUUbf1BsPvoDMvnQ4yqD",
               share: 100,
             },
           ],
