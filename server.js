@@ -38,7 +38,6 @@ app.use(helmet());
 
 // Parsing middleware
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use("/output", express.static("output"));
 app.use("/images", express.static("images"));
