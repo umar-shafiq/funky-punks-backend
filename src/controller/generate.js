@@ -25,50 +25,115 @@ module.exports = {
       // const body = await loginSchema.validateAsync(req.body);
       console.log(req.body);
 
-      const { body, bottom, footwear, top } = req.body;
-      console.log("body", body);
-
-      const bodyy = await canvas.loadImage(
-        path.join(__dirname, `../../images/body/${body}`)
-      );
-      const bottomm = await canvas.loadImage(
-        path.join(__dirname, `../../images/bottom/${bottom}`)
-      );
-      const footwearr = await canvas.loadImage(
-        path.join(__dirname, `../../images/footwear/${footwear}`)
-      );
-      const topp = await canvas.loadImage(
-        path.join(__dirname, `../../images/top/${top}`)
-      );
-
+      const attrubutes = req.body.rollData;
+      console.log("attrubutes", attrubutes);
+      let facialHair;
+      let mouth;
+      let eyes;
       ctx.fillStyle = "#fff";
-      ctx.drawImage(bodyy, 0, 0, 600, 600);
-      ctx.drawImage(bottomm, 0, 0, 600, 600);
-      ctx.drawImage(footwearr, 0, 0, 600, 600);
-      ctx.drawImage(topp, 0, 0, 600, 600);
+      const background = await canvas.loadImage(
+        path.join(
+          __dirname,
+          `../../images/${attrubutes.gender}/BACKGROUND/${attrubutes.background}`
+        )
+      );
+      ctx.drawImage(background, 0, 0, 600, 600);
+
+      const body = await canvas.loadImage(
+        path.join(
+          __dirname,
+          `../../images/${attrubutes.gender}/TYPE/${attrubutes.body}`
+        )
+      );
+      ctx.drawImage(body, 0, 0, 600, 600);
+
+      const bottom = await canvas.loadImage(
+        path.join(
+          __dirname,
+          `../../images/${attrubutes.gender}/BOTTOM/${attrubutes.bottom}`
+        )
+      );
+      ctx.drawImage(bottom, 0, 0, 600, 600);
+
+      const top = await canvas.loadImage(
+        path.join(
+          __dirname,
+          `../../images/${attrubutes.gender}/TOP/${attrubutes.top}`
+        )
+      );
+      ctx.drawImage(top, 0, 0, 600, 600);
+
+      const footwear = await canvas.loadImage(
+        path.join(
+          __dirname,
+          `../../images/${attrubutes.gender}/FOOTWEAR/${attrubutes.footwear}`
+        )
+      );
+      ctx.drawImage(footwear, 0, 0, 600, 600);
+      if (attrubutes.mouth) {
+        mouth = await canvas.loadImage(
+          path.join(
+            __dirname,
+            `../../images/${attrubutes.gender}/MOUTH/${attrubutes.mouth}`
+          )
+        );
+        ctx.drawImage(mouth, 0, 0, 600, 600);
+      }
+
+      if (attrubutes.eyes) {
+        eyes = await canvas.loadImage(
+          path.join(
+            __dirname,
+            `../../images/${attrubutes.gender}/EYES/${attrubutes.eyes}`
+          )
+        );
+        ctx.drawImage(eyes, 0, 0, 600, 600);
+      }
+      if (attrubutes.facialHair) {
+        facialHair = await canvas.loadImage(
+          path.join(
+            __dirname,
+            `../../images/${attrubutes.gender}/FACIAL HAIR/${attrubutes.facialHair}`
+          )
+        );
+        ctx.drawImage(facialHair, 0, 0, 600, 600);
+      }
+      const head = await canvas.loadImage(
+        path.join(
+          __dirname,
+          `../../images/${attrubutes.gender}/HEAD/${attrubutes.head}`
+        )
+      );
+      ctx.drawImage(head, 0, 0, 600, 600);
+
       console.log("draw");
       const buffer = ca.toBuffer("image/png");
       console.log("asdasdasd");
+      const date = new Date();
+
+      const name = date.getTime();
+
       fs.writeFileSync(
-        path.join(__dirname, `../../output/${punk}.png`),
+        path.join(__dirname, `../../output/${name}.png`),
         buffer
       );
 
       const response = await ipfs.add(buffer);
       let hash = response[0].hash;
+      console.log(hash);
 
-      const nft = await models.NFT.create({
-        name: `Punk ${punk}`,
-        description: "",
-        image: `https://ipfs.io/ipfs/${punk}`,
-        body: body,
-        bottom: bottom,
-        footwear: footwear,
-        top: top,
-      });
-      punk++;
+      // const nft = await models.NFT.create({
+      //   name: `Punk ${punk}`,
+      //   description: "",
+      //   image: `https://ipfs.io/ipfs/${hash}`,
+      //   body: body,
+      //   bottom: bottom,
+      //   footwear: footwear,
+      //   top: top,
+      // });
+      //ipfs.io/ipfs/QmSDcE6CrKmQuCSCQ6YTYKx13AXg7c4mgP4n27x3vi5keq
 
-      return res.json(nft);
+      https: return res.json(nft);
     } catch (error) {
       console.log("server error", error);
       next(error);

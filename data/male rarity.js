@@ -134,6 +134,7 @@ let FACIALHAIR = [
     Rarity: "2",
   },
 ];
+
 let FOOTWEAR = [
   {
     Attribute: "Flip Flops",
